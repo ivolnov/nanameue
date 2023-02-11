@@ -41,7 +41,14 @@ final class PostCell: UITableViewCell {
 
     func configure(with model: Post) {
         text.text = model.text
-        image.kf.setImage(with: URL(string: model.url))
+        if let url = model.url {
+            image.kf.setImage(with: URL(string: url))
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        image.image = nil
     }
     
     private func setUp() {

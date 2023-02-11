@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1097672194173-t01d8lfqmtvpp97m9c7e6d35aoom2q6b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1097672194173-t01d8lfqmtvpp97m9c7e6d35aoom2q6b</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBwGJqxaH2eZ843bPL5fD-E9t6GYf4cd6g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1097672194173</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ivolnov.nanameue</string>
+	<key>PROJECT_ID</key>
+	<string>nanameue-ivolnov</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nanameue-ivolnov.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1097672194173:ios:24a253a78e4e0546e99914</string>
+</dict>
+</plist>

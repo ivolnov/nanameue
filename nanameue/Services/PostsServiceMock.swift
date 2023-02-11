@@ -8,7 +8,7 @@
 import Combine
 
 final class PostsServiceMock: PostsService {
-    func posts() -> AnyPublisher<[Post], Error> {
+    func posts() -> AnyPublisher<Result<[Post], Error>, Never> {
         let postsMock = [
             Post(
                 id: "0",
@@ -17,7 +17,7 @@ final class PostsServiceMock: PostsService {
             ),
             Post(
                 id: "1",
-                url: "https://picsum.photos/id/237/300/500",
+                url: nil,
                 text: "Lorem ipsum dolor sit amet, amet liber in pro. Errem doctus iuvaret sit ei, lorem percipitur dissentias id ius. Ius laudem lobortis in. Pro at tale indoctum voluptatibus, eos et debet nonumes dissentias. Partem legendos perpetua sit te."
             ),
             Post(
@@ -41,6 +41,14 @@ final class PostsServiceMock: PostsService {
                 text: "Lorem ipsum dolor sit amet, amet liber in pro."
             )
         ]
-        return Just(postsMock).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(.success(postsMock)).eraseToAnyPublisher()
+    }
+    
+    func create(post: Post) -> AnyPublisher<Result<Void, Error>, Never> {
+        Just(.success(())).eraseToAnyPublisher()
+    }
+    
+    func delete(post: Post) -> AnyPublisher<Result<Void, Error>, Never> {
+        Just(.success(())).eraseToAnyPublisher()
     }
 }

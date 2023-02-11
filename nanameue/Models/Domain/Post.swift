@@ -9,6 +9,6 @@ import Foundation
 
 struct Post: Decodable {
     let id: String
-    let url: String
+    let url: String?
     let text: String
 }

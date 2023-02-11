@@ -9,7 +9,9 @@ import Foundation
 import Combine
 
 protocol PostsService: AnyObject {
-    func posts() -> AnyPublisher<[Post], Error>
+    func create(post: Post) -> AnyPublisher<Result<Void, Error>, Never>
+    func delete(post: Post) -> AnyPublisher<Result<Void, Error>, Never>
+    func posts() -> AnyPublisher<Result<[Post], Error>, Never>
 }
 
 final class PostsServiceImpl {
@@ -32,19 +34,28 @@ final class PostsServiceImpl {
 }
 
 extension PostsServiceImpl: PostsService {
-    
-    func posts() -> AnyPublisher<[Post], Error> {
-        
+  
+    func posts() -> AnyPublisher<Result<[Post], Error>, Never> {
         session
             .dataTaskPublisher(for: url)
             .tryMap() { element -> Data in
                 guard let response = element.response as? HTTPURLResponse,
                       200 ..< 300 ~= response.statusCode else {
-                        throw URLError(.badServerResponse)
-                    }
-                return element.data
+                    throw URLError(.badServerResponse)
                 }
+                return element.data
+            }
             .decode(type: [Post].self, decoder: decoder)
+            .map { posts in .success(posts)}
+            .catch { error in Just(.failure(error)) }
             .eraseToAnyPublisher()
+    }
+    
+    func create(post: Post) -> AnyPublisher<Result<Void, Error>, Never> {
+        Just(.success(())).eraseToAnyPublisher()
+    }
+    
+    func delete(post: Post) -> AnyPublisher<Result<Void, Error>, Never> {
+        Just(.success(())).eraseToAnyPublisher()
     }
 }

@@ -40,12 +40,34 @@ class FeedViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadPostsSubject.send(())
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension FeedViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        let image = info[.originalImage] as? UIImage
+        let jpeg = image?.jpegData(compressionQuality: 0.8)
+        let post = PostDraft(
+            text: "This is a test post.\n It was created at \(Date().formatted(date: .abbreviated, time: .shortened))",
+            jpeg: jpeg
+        )
+        viewModel.createPostSubject.send(post)
+        picker.dismiss(animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
 extension FeedViewController: UITableViewDelegate {}
 
-// MARK: - Private
+// MARK: - Layout
 private extension FeedViewController {
     
     func setUpNavBar() {
@@ -81,6 +103,10 @@ private extension FeedViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
+}
+
+// MARK: - Binding
+private extension FeedViewController {
     
     func bind() {
         viewModel
@@ -102,6 +128,10 @@ private extension FeedViewController {
             )
             .store(in: &bag)
     }
+}
+
+// MARK: - Event handling
+private extension FeedViewController {
     
     func setActivityIndicator(visible: Bool) {
         switch visible {
@@ -118,16 +148,5 @@ private extension FeedViewController {
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
-    }
-}
-
-extension FeedViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-    ) {
-        let image = info[.originalImage] as? UIImage
-        _ = image?.jpegData(compressionQuality: 0.8)
-        picker.dismiss(animated: true)
     }
 }
