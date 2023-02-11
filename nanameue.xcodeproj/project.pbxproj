@@ -27,6 +27,7 @@
 		9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D93129955AC100BDE210 /* AppDelegate.swift */; };
 		9EC5D934299560D700BDE210 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D933299560D700BDE210 /* ImageService.swift */; };
 		9EC5D9382997CE5C00BDE210 /* PostDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D9372997CE5C00BDE210 /* PostDraft.swift */; };
+		9EC5D93A2997D48000BDE210 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D9392997D48000BDE210 /* UserService.swift */; };
 		9ECA67932991727000AA2A88 /* nanameueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67922991727000AA2A88 /* nanameueApp.swift */; };
 		9ECA67952991727000AA2A88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67942991727000AA2A88 /* ContentView.swift */; };
 		9ECA67972991727100AA2A88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA67962991727100AA2A88 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		9EC5D93129955AC100BDE210 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EC5D933299560D700BDE210 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		9EC5D9372997CE5C00BDE210 /* PostDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraft.swift; sourceTree = "<group>"; };
+		9EC5D9392997D48000BDE210 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9ECA678F2991727000AA2A88 /* nanameue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nanameue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECA67922991727000AA2A88 /* nanameueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueApp.swift; sourceTree = "<group>"; };
 		9ECA67942991727000AA2A88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				9E971ACF2991806800803D4C /* PostsService.swift */,
 				9E971ADA299533D000803D4C /* PostsServiceMock.swift */,
 				9EC5D933299560D700BDE210 /* ImageService.swift */,
+				9EC5D9392997D48000BDE210 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			files = (
 				9E971ACA29917C6C00803D4C /* Section.swift in Sources */,
 				9EC5D934299560D700BDE210 /* ImageService.swift in Sources */,
+				9EC5D93A2997D48000BDE210 /* UserService.swift in Sources */,
 				9ECA67952991727000AA2A88 /* ContentView.swift in Sources */,
 				9ECA67932991727000AA2A88 /* nanameueApp.swift in Sources */,
 				9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */,

@@ -46,7 +46,7 @@ extension ImageServiceImpl: ImageService {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
                 
-        fileRef.putData(jpeg, metadata: metadata) { (metadata, error) in
+        fileRef.putData(jpeg, metadata: metadata) { metadata, error in
             
             if let error = error {
                 completion(.failure(error))

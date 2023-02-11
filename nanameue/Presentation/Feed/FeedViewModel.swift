@@ -14,6 +14,7 @@ final class FeedViewModel {
     private let snapshotBuilder: FeedSnapshotBuilder
     private let imageService: ImageService
     private let postsService: PostsService
+    private let userService: UserService
     
     let createPostSubject: PassthroughSubject<PostDraft, Never> = .init()
     let deletePostSubject: PassthroughSubject<Post, Never> = .init()
@@ -25,12 +26,15 @@ final class FeedViewModel {
     init(
         snapshotBuilder: FeedSnapshotBuilder = FeedSnapshotBuilderImpl(),
         imageService: ImageService = ImageServiceImpl(),
-        postsService: PostsService = PostsServiceMock()
+        postsService: PostsService = PostsServiceMock(),
+        userService: UserService = UserServiceImpl()
     ) {
         self.snapshotBuilder = snapshotBuilder
         self.imageService = imageService
         self.postsService = postsService
+        self.userService = userService
         
+        signIn()
         bindPosts()
         bindCreatePost()
     }
@@ -72,5 +76,12 @@ private extension FeedViewModel {
                 return false
             }
             .assign(to: &$loading)
+    }
+}
+
+// MARK: - auth
+private extension FeedViewModel {
+    func signIn() {
+        userService.signIn()
     }
 }
