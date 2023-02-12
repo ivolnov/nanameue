@@ -196,7 +196,7 @@ private extension PostViewController {
     
     @objc func didTapDone() {
         let text = textView.text ?? ""
-        let jpeg = image.image?.jpegData(compressionQuality: 0.8)
+        let jpeg = image.image?.jpegData(compressionQuality: 0.2)
         viewModel.createPostSubject.send(.init(text: text, jpeg: jpeg))
     }
     
@@ -206,4 +206,3 @@ private extension PostViewController {
         present(picker, animated: true)
     }
 }
-

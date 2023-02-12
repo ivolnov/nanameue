@@ -54,8 +54,15 @@ extension FeedViewController: UITableViewDelegate {}
 private extension FeedViewController {
     
     func setUpNavBar() {
+        
+        let config = UIImage.SymbolConfiguration(scale: .large)
+        let image = UIImage(systemName: "person.fill.xmark", withConfiguration: config)
+        let signOut = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(didTapSignOut))
+        navigationItem.leftBarButtonItem = signOut
+        
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
         navigationItem.rightBarButtonItem = add
+        
         navigationItem.title = "Posts"
     }
     
@@ -121,9 +128,11 @@ private extension FeedViewController {
         case true:
             activityIndicator.startAnimating()
             activityIndicator.isHidden = false
+            view.isUserInteractionEnabled = false
         case false:
             activityIndicator.stopAnimating()
             activityIndicator.isHidden = true
+            view.isUserInteractionEnabled = true
         }
     }
     
@@ -131,5 +140,9 @@ private extension FeedViewController {
         let controller = PostViewController(completionSubject: viewModel.loadPostsSubject)
         let stack = UINavigationController(rootViewController: controller)
         present(stack, animated: true)
+    }
+    
+    @objc func didTapSignOut() {
+        ()
     }
 }
