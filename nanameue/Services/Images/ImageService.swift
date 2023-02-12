@@ -9,5 +9,6 @@ import Combine
 import Foundation
 
 protocol ImageService {
-    func upload(jpeg: Data) -> AnyPublisher<Result<URL, Error>, Never>
+    func upload(jpeg: Data?) -> AnyPublisher<Result<URL?, Error>, Never>
+    func delete(image url: String?) -> AnyPublisher<Result<Void, Error>, Never>
 }

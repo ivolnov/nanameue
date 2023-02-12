@@ -32,7 +32,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        setUpTableViewView()
+        setUpTableView()
         setUpActivityIndicator()
         bind()
     }
@@ -44,23 +44,6 @@ class FeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadPostsSubject.send(())
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-extension FeedViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-    ) {
-        let image = info[.originalImage] as? UIImage
-        let jpeg = image?.jpegData(compressionQuality: 0.8)
-        let post = PostDraft(
-            text: "This is a test post.\n It was created at \(Date().formatted(date: .abbreviated, time: .shortened))",
-            jpeg: jpeg
-        )
-        viewModel.createPostSubject.send(post)
-        picker.dismiss(animated: true)
     }
 }
 
@@ -76,7 +59,7 @@ private extension FeedViewController {
         navigationItem.title = "Posts"
     }
     
-    func setUpTableViewView() {
+    func setUpTableView() {
         tableView = UITableView()
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -145,8 +128,8 @@ private extension FeedViewController {
     }
     
     @objc func didTapAdd() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        present(picker, animated: true)
+        let controller = PostViewController(completionSubject: viewModel.loadPostsSubject)
+        let stack = UINavigationController(rootViewController: controller)
+        present(stack, animated: true)
     }
 }

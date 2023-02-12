@@ -26,7 +26,6 @@
 		9EC5D93029955A0A00BDE210 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9EC5D92F29955A0A00BDE210 /* FirebaseStorage */; };
 		9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D93129955AC100BDE210 /* AppDelegate.swift */; };
 		9EC5D934299560D700BDE210 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D933299560D700BDE210 /* ImageService.swift */; };
-		9EC5D9382997CE5C00BDE210 /* PostDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D9372997CE5C00BDE210 /* PostDraft.swift */; };
 		9EC5D93A2997D48000BDE210 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D9392997D48000BDE210 /* UserService.swift */; };
 		9EC5D9402997EB7C00BDE210 /* FirebasePostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D93F2997EB7C00BDE210 /* FirebasePostsService.swift */; };
 		9EC5D9462997EBD400BDE210 /* FirebaseImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5D9452997EBD400BDE210 /* FirebaseImageService.swift */; };
@@ -43,6 +42,9 @@
 		9ECA67AF2991727100AA2A88 /* nanameueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67AE2991727100AA2A88 /* nanameueUITests.swift */; };
 		9ECA67B12991727100AA2A88 /* nanameueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67B02991727100AA2A88 /* nanameueUITestsLaunchTests.swift */; };
 		9ED5B5802998F80300FCA0F6 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B57F2998F80300FCA0F6 /* Date+Utils.swift */; };
+		9ED5B584299905DF00FCA0F6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B583299905DF00FCA0F6 /* PostViewController.swift */; };
+		9ED5B586299905E900FCA0F6 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B585299905E900FCA0F6 /* PostViewModel.swift */; };
+		9ED5B58929991E0800FCA0F6 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +80,6 @@
 		9E971ADC299551D600803D4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EC5D93129955AC100BDE210 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EC5D933299560D700BDE210 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
-		9EC5D9372997CE5C00BDE210 /* PostDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraft.swift; sourceTree = "<group>"; };
 		9EC5D9392997D48000BDE210 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9EC5D93F2997EB7C00BDE210 /* FirebasePostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePostsService.swift; sourceTree = "<group>"; };
 		9EC5D9452997EBD400BDE210 /* FirebaseImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageService.swift; sourceTree = "<group>"; };
@@ -99,6 +100,9 @@
 		9ECA67AE2991727100AA2A88 /* nanameueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueUITests.swift; sourceTree = "<group>"; };
 		9ECA67B02991727100AA2A88 /* nanameueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9ED5B57F2998F80300FCA0F6 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		9ED5B583299905DF00FCA0F6 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		9ED5B585299905E900FCA0F6 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 		9E971AB6299175F000803D4C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9ED5B582299905D000FCA0F6 /* Post */,
 				9E971AD72991826B00803D4C /* DesignSystem */,
 				9E971AB7299175FB00803D4C /* Feed */,
 			);
@@ -184,7 +189,6 @@
 		9E971ACB29917F7300803D4C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9EC5D9362997CE5300BDE210 /* DTO */,
 				9EC5D9352997CE4C00BDE210 /* Domain */,
 			);
 			path = Models;
@@ -226,20 +230,13 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		9EC5D9362997CE5300BDE210 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				9EC5D9372997CE5C00BDE210 /* PostDraft.swift */,
-			);
-			path = DTO;
-			sourceTree = "<group>";
-		};
 		9EC5D93B2997E87100BDE210 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				9EC5D947299802AB00BDE210 /* CodableMapper.swift */,
 				9EC5D94D29981F6F00BDE210 /* Publisher+Utils.swift */,
 				9ED5B57F2998F80300FCA0F6 /* Date+Utils.swift */,
+				9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -338,6 +335,15 @@
 				9E971ADA299533D000803D4C /* PostsServiceMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		9ED5B582299905D000FCA0F6 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B583299905DF00FCA0F6 /* PostViewController.swift */,
+				9ED5B585299905E900FCA0F6 /* PostViewModel.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,11 +490,13 @@
 				9EC5D948299802AB00BDE210 /* CodableMapper.swift in Sources */,
 				9E971ACA29917C6C00803D4C /* Section.swift in Sources */,
 				9EC5D934299560D700BDE210 /* ImageService.swift in Sources */,
+				9ED5B58929991E0800FCA0F6 /* UIView+Utils.swift in Sources */,
 				9EC5D9502998F21200BDE210 /* PostCellViewModel.swift in Sources */,
 				9EC5D93A2997D48000BDE210 /* UserService.swift in Sources */,
 				9ECA67952991727000AA2A88 /* ContentView.swift in Sources */,
 				9EC5D9402997EB7C00BDE210 /* FirebasePostsService.swift in Sources */,
 				9ECA67932991727000AA2A88 /* nanameueApp.swift in Sources */,
+				9ED5B586299905E900FCA0F6 /* PostViewModel.swift in Sources */,
 				9EC5D9462997EBD400BDE210 /* FirebaseImageService.swift in Sources */,
 				9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */,
 				9E971ADB299533D000803D4C /* PostsServiceMock.swift in Sources */,
@@ -499,10 +507,10 @@
 				9EC5D94C2998112500BDE210 /* AppError.swift in Sources */,
 				9E971AC129917A7500803D4C /* FeedDataSource.swift in Sources */,
 				9E971ABE299176D100803D4C /* FeedViewModel.swift in Sources */,
+				9ED5B584299905DF00FCA0F6 /* PostViewController.swift in Sources */,
 				9E971AD92991828400803D4C /* Constants.swift in Sources */,
 				9ED5B5802998F80300FCA0F6 /* Date+Utils.swift in Sources */,
 				9E971AC829917C6600803D4C /* Cell.swift in Sources */,
-				9EC5D9382997CE5C00BDE210 /* PostDraft.swift in Sources */,
 				9E971AC329917B1100803D4C /* FeedDataSourceBuilder.swift in Sources */,
 				9E971ABC2991764B00803D4C /* FeedViewController.swift in Sources */,
 				9E971ACD29917F7F00803D4C /* Post.swift in Sources */,

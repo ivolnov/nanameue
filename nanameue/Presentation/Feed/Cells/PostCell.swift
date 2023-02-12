@@ -80,9 +80,17 @@ final class PostCell: UITableViewCell {
 private extension PostCell {
     
     private func updateData() {
-        if let url = viewModel?.post.url { image.kf.setImage(with: URL(string: url)) }
+        
         date.text = viewModel?.post.created.timeAgoDisplay()
         text.text = viewModel?.post.text
+        
+        switch viewModel?.post.url {
+        case .some(let url):
+            image.kf.setImage(with: URL(string: url))
+            image.heightConstraint?.constant = .imageHeight
+        case .none:
+            image.heightConstraint?.constant = 0
+        }
     }
     
     private func setUp() {
@@ -102,7 +110,7 @@ private extension PostCell {
             deleteButton.heightAnchor.constraint(equalToConstant: .buttonHeight),
             deleteButton.widthAnchor.constraint(equalToConstant: .buttonWidth),
             
-            image.heightAnchor.constraint(equalToConstant: .imageHeight),
+            image.heightAnchor.constraint(equalToConstant: 0),
             image.topAnchor.constraint(equalTo: date.bottomAnchor, constant: .margin.small),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .margin.medium),
             image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.margin.medium),

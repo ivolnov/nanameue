@@ -16,7 +16,6 @@ final class FeedViewModel {
     private let postsService: PostsService
     private let userService: UserService
     
-    let createPostSubject: PassthroughSubject<PostDraft, Never> = .init()
     let deletePostSubject: PassthroughSubject<Post, Never> = .init()
     let loadPostsSubject: PassthroughSubject<Void, Never> = .init()
     
@@ -38,7 +37,6 @@ final class FeedViewModel {
         
         signIn()
         bindPosts()
-        bindCreatePost()
         bindDeletePost()
     }
 }
@@ -65,58 +63,25 @@ private extension FeedViewModel {
             .assign(to: &$loading)
     }
     
-    func bindCreatePost() {
-        
-        createPostSubject
-            .map { _ in true }
-            .assign(to: &$loading)
-        
-        let user = userService
-            .user()
-            .onlySuccess()
-        
-        let post = createPostSubject
-            .compactMap { post in post.jpeg }
-            .flatMap { jpeg in self.imageService.upload(jpeg: jpeg) }
-            .onlySuccess()
-            .map { url in
-                Post(
-                    id: UUID().uuidString,
-                    url: url.absoluteString,
-                    text: "This is a test for post creation",
-                    created: Date()
-                )
-            }
-        
-        Publishers
-            .CombineLatest(post, user)
-            .flatMap { post, user in self.postsService.create(post: post, for: user) }
-            .onlySuccess()
-            .sink {
-                self.loadPostsSubject.send()
-                self.loading = false
-            }
-            .store(in: &bag)
-    }
-    
     func bindDeletePost() {
         
         deletePostSubject
             .map { _ in true }
             .assign(to: &$loading)
         
+        let image = deletePostSubject
+            .flatMap { post in self.imageService.delete(image: post.url) }
+            .onlySuccess()
+        
         let user = userService
             .user()
             .onlySuccess()
         
         Publishers
-            .CombineLatest(deletePostSubject, user)
-            .flatMap { post, user in self.postsService.delete(post: post, for: user) }
+            .CombineLatest3(deletePostSubject, image, user)
+            .flatMap { post, image, user in self.postsService.delete(post: post, for: user) }
             .onlySuccess()
-            .sink {
-                self.loadPostsSubject.send()
-                self.loading = false
-            }
+            .sink { self.loadPostsSubject.send() }
             .store(in: &bag)
     }
 }
