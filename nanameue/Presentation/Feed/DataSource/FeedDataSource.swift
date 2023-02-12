@@ -15,7 +15,7 @@ final class FeedDataSource: UITableViewDiffableDataSource<Section, Cell> {
             
             switch cell {
                 
-            case let .post(model):
+            case let .post(viewModel):
                 
                 guard let cellView = tableView.dequeueReusableCell(
                     withIdentifier: PostCell.reuseIdentifier,
@@ -24,8 +24,8 @@ final class FeedDataSource: UITableViewDiffableDataSource<Section, Cell> {
                     return nil
                 }
                 
+                cellView.set(viewModel: viewModel)
                 cellView.selectionStyle = .none
-                cellView.configure(with: model)
                 
                 return cellView
             }

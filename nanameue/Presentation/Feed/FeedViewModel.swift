@@ -23,10 +23,12 @@ final class FeedViewModel {
     @Published var snapshot: FeedSnapshot?
     @Published var loading = true
     
+    private var bag: Set<AnyCancellable> = []
+    
     init(
         snapshotBuilder: FeedSnapshotBuilder = FeedSnapshotBuilderImpl(),
-        imageService: ImageService = ImageServiceImpl(),
-        postsService: PostsService = PostsServiceMock(),
+        imageService: ImageService = FirebaseImageService(),
+        postsService: PostsService = FirebasePostsService(),
         userService: UserService = UserServiceImpl()
     ) {
         self.snapshotBuilder = snapshotBuilder
@@ -37,6 +39,7 @@ final class FeedViewModel {
         signIn()
         bindPosts()
         bindCreatePost()
+        bindDeletePost()
     }
 }
 
@@ -44,17 +47,17 @@ final class FeedViewModel {
 private extension FeedViewModel {
     
     func bindPosts() {
+        
         loadPostsSubject
-            .flatMap { self.postsService.posts() }
-            .compactMap { result in
-                switch result {
-                case .success(let posts):
-                    return posts
-                case .failure:
-                    return nil
-                }
-            }
-            .map { posts in self.snapshotBuilder.build(posts: posts) }
+            .map { true }
+            .assign(to: &$loading)
+        
+        loadPostsSubject
+            .flatMap { self.userService.user() }
+            .onlySuccess()
+            .flatMap { user in self.postsService.posts(for: user) }
+            .onlySuccess()
+            .map { posts in self.snapshotBuilder.build(posts: posts, with: self.deletePostSubject) }
             .assign(to: &$snapshot)
         
         $snapshot
@@ -63,25 +66,64 @@ private extension FeedViewModel {
     }
     
     func bindCreatePost() {
+        
         createPostSubject
+            .map { _ in true }
+            .assign(to: &$loading)
+        
+        let user = userService
+            .user()
+            .onlySuccess()
+        
+        let post = createPostSubject
             .compactMap { post in post.jpeg }
             .flatMap { jpeg in self.imageService.upload(jpeg: jpeg) }
-            .map { result in
-                switch result {
-                case .success(let url):
-                    print(url)
-                case .failure(let error):
-                    print(error)
-                }
-                return false
+            .onlySuccess()
+            .map { url in
+                Post(
+                    id: UUID().uuidString,
+                    url: url.absoluteString,
+                    text: "This is a test for post creation",
+                    created: Date()
+                )
             }
+        
+        Publishers
+            .CombineLatest(post, user)
+            .flatMap { post, user in self.postsService.create(post: post, for: user) }
+            .onlySuccess()
+            .sink {
+                self.loadPostsSubject.send()
+                self.loading = false
+            }
+            .store(in: &bag)
+    }
+    
+    func bindDeletePost() {
+        
+        deletePostSubject
+            .map { _ in true }
             .assign(to: &$loading)
+        
+        let user = userService
+            .user()
+            .onlySuccess()
+        
+        Publishers
+            .CombineLatest(deletePostSubject, user)
+            .flatMap { post, user in self.postsService.delete(post: post, for: user) }
+            .onlySuccess()
+            .sink {
+                self.loadPostsSubject.send()
+                self.loading = false
+            }
+            .store(in: &bag)
     }
 }
 
 // MARK: - auth
 private extension FeedViewModel {
     func signIn() {
-        userService.signIn()
+        userService.signIn() // TODO: combine with posts()
     }
 }

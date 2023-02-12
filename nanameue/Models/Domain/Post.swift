@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Post: Decodable {
+struct Post: Codable {
     let id: String
     let url: String?
     let text: String
+    let created: Date
 }
