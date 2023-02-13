@@ -49,6 +49,7 @@ private extension SignInViewModel {
     
     func bindEmail() {
         emailSubject
+            .dropFirst(1)
             .map { email in self.emailValidator.isValid(text: email) }
             .map { valid in valid ? "" : "email format is incorrect" }
             .assign(to: &$error)
@@ -56,8 +57,9 @@ private extension SignInViewModel {
     
     func bindPassword() {
         passwordSubject
+            .dropFirst(1)
             .map { email in self.passwordValidator.isValid(text: email) }
-            .map { valid in valid ? "" : "password format is incorrect" }
+            .map { valid in valid ? "" : "password must contain a number, an upper case letter and be longer than 7 letters" }
             .assign(to: &$error)
     }
         
