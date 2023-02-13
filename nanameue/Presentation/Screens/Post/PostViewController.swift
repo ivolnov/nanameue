@@ -103,7 +103,6 @@ private extension PostViewController {
     func setUpImageView() {
         image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = .radius.small
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true

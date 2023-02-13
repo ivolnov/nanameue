@@ -45,6 +45,8 @@
 		9ED5B584299905DF00FCA0F6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B583299905DF00FCA0F6 /* PostViewController.swift */; };
 		9ED5B586299905E900FCA0F6 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B585299905E900FCA0F6 /* PostViewModel.swift */; };
 		9ED5B58929991E0800FCA0F6 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */; };
+		9ED5B58D299941CA00FCA0F6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */; };
+		9ED5B58F2999420300FCA0F6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		9ED5B583299905DF00FCA0F6 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		9ED5B585299905E900FCA0F6 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,9 +152,8 @@
 		9E971AB6299175F000803D4C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				9ED5B582299905D000FCA0F6 /* Post */,
+				9ED5B58A2999417E00FCA0F6 /* Screens */,
 				9E971AD72991826B00803D4C /* DesignSystem */,
-				9E971AB7299175FB00803D4C /* Feed */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -346,6 +349,25 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		9ED5B58A2999417E00FCA0F6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B58B2999418A00FCA0F6 /* SignIn */,
+				9E971AB7299175FB00803D4C /* Feed */,
+				9ED5B582299905D000FCA0F6 /* Post */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9ED5B58B2999418A00FCA0F6 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */,
+				9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -497,9 +519,11 @@
 				9EC5D9402997EB7C00BDE210 /* FirebasePostsService.swift in Sources */,
 				9ECA67932991727000AA2A88 /* nanameueApp.swift in Sources */,
 				9ED5B586299905E900FCA0F6 /* PostViewModel.swift in Sources */,
+				9ED5B58D299941CA00FCA0F6 /* SignInViewController.swift in Sources */,
 				9EC5D9462997EBD400BDE210 /* FirebaseImageService.swift in Sources */,
 				9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */,
 				9E971ADB299533D000803D4C /* PostsServiceMock.swift in Sources */,
+				9ED5B58F2999420300FCA0F6 /* SignInViewModel.swift in Sources */,
 				9EC5D94E29981F6F00BDE210 /* Publisher+Utils.swift in Sources */,
 				9EC5D94A2998077800BDE210 /* User.swift in Sources */,
 				9E971AC529917B7500803D4C /* FeedSnapshotBuilder.swift in Sources */,

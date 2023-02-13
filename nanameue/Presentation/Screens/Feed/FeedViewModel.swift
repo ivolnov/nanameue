@@ -18,8 +18,10 @@ final class FeedViewModel {
     
     let deletePostSubject: PassthroughSubject<Post, Never> = .init()
     let loadPostsSubject: PassthroughSubject<Void, Never> = .init()
+    let signOutSubject: PassthroughSubject<Void, Never> = .init()
     
     @Published var snapshot: FeedSnapshot?
+    @Published var showSignIn = false
     @Published var loading = true
     
     private var bag: Set<AnyCancellable> = []
@@ -35,7 +37,7 @@ final class FeedViewModel {
         self.postsService = postsService
         self.userService = userService
         
-        signIn()
+        bindAuth()
         bindPosts()
         bindDeletePost()
     }
@@ -43,6 +45,25 @@ final class FeedViewModel {
 
 // MARK: - Binding
 private extension FeedViewModel {
+    
+    func bindAuth() {
+        signOutSubject
+            .map { self.userService.signOut() }
+            .map { true }
+            .assign(to: &$showSignIn)
+        
+        loadPostsSubject
+            .flatMap { self.userService.user() }
+            .map { result in
+                switch result {
+                case .success:
+                    return false
+                case .failure:
+                    return true
+                }
+            }
+            .assign(to: &$showSignIn)
+    }
     
     func bindPosts() {
         
@@ -83,12 +104,5 @@ private extension FeedViewModel {
             .onlySuccess()
             .sink { self.loadPostsSubject.send() }
             .store(in: &bag)
-    }
-}
-
-// MARK: - auth
-private extension FeedViewModel {
-    func signIn() {
-        userService.signIn() // TODO: combine with posts()
     }
 }

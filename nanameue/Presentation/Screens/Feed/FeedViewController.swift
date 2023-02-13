@@ -117,11 +117,28 @@ private extension FeedViewController {
                 receiveValue: setActivityIndicator
             )
             .store(in: &bag)
+        
+        viewModel
+            .$showSignIn
+            .filter { signIn in signIn }
+            .map { _ in () }
+            .receive(on: RunLoop.main)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: showSignIn
+            )
+            .store(in: &bag)
     }
 }
 
 // MARK: - Event handling
 private extension FeedViewController {
+    
+    func showSignIn() {
+        let controller = SignInViewController(completionSubject: viewModel.loadPostsSubject)
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false)
+    }
     
     func setActivityIndicator(visible: Bool) {
         switch visible {
@@ -143,6 +160,6 @@ private extension FeedViewController {
     }
     
     @objc func didTapSignOut() {
-        ()
+        viewModel.signOutSubject.send(())
     }
 }

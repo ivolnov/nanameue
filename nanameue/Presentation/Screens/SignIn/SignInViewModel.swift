@@ -1,0 +1,118 @@
+//
+//  SignInViewModel.swift
+//  nanameue
+//
+//  Created by Volnov Ivan on 12/02/2023.
+//
+
+import Foundation
+import Combine
+
+final class SignInViewModel {
+    
+    struct Credentials {
+        let email: String
+        let password: String
+    }
+    
+    // Dependencies
+    private let passwordValidator: TextFieldValidator
+    private let emailValidator: TextFieldValidator
+    private let userService: UserService
+    
+    let signInSubject: CurrentValueSubject<Credentials?, Never> = .init(nil)
+    let passwordSubject: CurrentValueSubject<String, Never> = .init("")
+    let emailSubject: CurrentValueSubject<String, Never> = .init("")
+    
+    @Published var dismiss = false
+    @Published var loading = false
+    @Published var error = " "
+    
+    private var bag: Set<AnyCancellable> = []
+    
+    init(
+        passwordValidator: TextFieldValidator = PasswordValidator(),
+        emailValidator: TextFieldValidator = EmailValidator(),
+        userService: UserService = UserServiceImpl()
+    ) {
+        self.passwordValidator = passwordValidator
+        self.emailValidator = emailValidator
+        self.userService = userService
+        bindEmail()
+        bindPassword()
+        bindSignIn()
+    }
+}
+
+// MARK: - Binding
+private extension SignInViewModel {
+    
+    func bindEmail() {
+        emailSubject
+            .map { email in self.emailValidator.isValid(text: email) }
+            .map { valid in valid ? "" : "email format is incorrect" }
+            .assign(to: &$error)
+    }
+    
+    func bindPassword() {
+        passwordSubject
+            .map { email in self.passwordValidator.isValid(text: email) }
+            .map { valid in valid ? "" : "password format is incorrect" }
+            .assign(to: &$error)
+    }
+        
+    func bindSignIn() {
+        
+        let signIn = signInSubject
+            .compactMap { credentials in credentials }
+            .flatMap { credentials in self.userService.signIn(email: credentials.email, password: credentials.password)}
+            .share()
+        
+        signInSubject
+            .compactMap { credentials in credentials }
+            .map { _ in true }
+            .assign(to: &$loading)
+        
+        signIn
+            .onlySuccess()
+            .map { _ in true }
+            .assign(to: &$dismiss)
+        
+        signIn
+            .onlyFailure()
+            .map { error in error.localizedDescription }
+            .assign(to: &$error)
+        
+        signIn
+            .map { _ in false }
+            .assign(to: &$loading)
+    }
+}
+
+protocol TextFieldValidator {
+    func isValid(text: String) -> Bool
+}
+
+final class EmailValidator: TextFieldValidator {
+    
+    init() {}
+    
+    func isValid(text: String) -> Bool {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@ ", regex)
+        let isValid = predicate.evaluate(with: text)
+        return isValid
+    }
+}
+
+final class PasswordValidator: TextFieldValidator {
+    
+    init() {}
+    
+    func isValid(text: String) -> Bool {
+        let regex = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@ ", regex)
+        let isValid = predicate.evaluate(with: text)
+        return isValid
+    }
+}
