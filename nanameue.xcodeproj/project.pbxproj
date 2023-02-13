@@ -38,7 +38,6 @@
 		9ECA67952991727000AA2A88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67942991727000AA2A88 /* ContentView.swift */; };
 		9ECA67972991727100AA2A88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA67962991727100AA2A88 /* Assets.xcassets */; };
 		9ECA679B2991727100AA2A88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA679A2991727100AA2A88 /* Preview Assets.xcassets */; };
-		9ECA67A52991727100AA2A88 /* nanameueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67A42991727100AA2A88 /* nanameueTests.swift */; };
 		9ECA67AF2991727100AA2A88 /* nanameueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67AE2991727100AA2A88 /* nanameueUITests.swift */; };
 		9ECA67B12991727100AA2A88 /* nanameueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA67B02991727100AA2A88 /* nanameueUITestsLaunchTests.swift */; };
 		9ED5B5802998F80300FCA0F6 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B57F2998F80300FCA0F6 /* Date+Utils.swift */; };
@@ -47,6 +46,15 @@
 		9ED5B58929991E0800FCA0F6 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */; };
 		9ED5B58D299941CA00FCA0F6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */; };
 		9ED5B58F2999420300FCA0F6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */; };
+		9ED5B592299A15EB00FCA0F6 /* TextFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B591299A15EB00FCA0F6 /* TextFieldValidator.swift */; };
+		9ED5B594299A15FE00FCA0F6 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B593299A15FE00FCA0F6 /* EmailValidator.swift */; };
+		9ED5B596299A161300FCA0F6 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B595299A161300FCA0F6 /* PasswordValidator.swift */; };
+		9ED5B59C299A166C00FCA0F6 /* EmailValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B59B299A166C00FCA0F6 /* EmailValidatorTests.swift */; };
+		9ED5B59F299A197000FCA0F6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED5B59E299A197000FCA0F6 /* Kingfisher */; };
+		9ED5B5A1299A197500FCA0F6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED5B5A0299A197500FCA0F6 /* FirebaseAuth */; };
+		9ED5B5A3299A197C00FCA0F6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED5B5A2299A197C00FCA0F6 /* FirebaseStorage */; };
+		9ED5B5A5299A198E00FCA0F6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED5B5A4299A198E00FCA0F6 /* FirebaseFirestoreSwift */; };
+		9ED5B5A7299A1A6500FCA0F6 /* PasswordValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5B5A6299A1A6500FCA0F6 /* PasswordValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +105,6 @@
 		9ECA67982991727100AA2A88 /* nanameue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nanameue.entitlements; sourceTree = "<group>"; };
 		9ECA679A2991727100AA2A88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9ECA67A02991727100AA2A88 /* nanameueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nanameueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ECA67A42991727100AA2A88 /* nanameueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueTests.swift; sourceTree = "<group>"; };
 		9ECA67AA2991727100AA2A88 /* nanameueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nanameueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECA67AE2991727100AA2A88 /* nanameueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueUITests.swift; sourceTree = "<group>"; };
 		9ECA67B02991727100AA2A88 /* nanameueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nanameueUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -107,6 +114,11 @@
 		9ED5B58829991E0800FCA0F6 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		9ED5B591299A15EB00FCA0F6 /* TextFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidator.swift; sourceTree = "<group>"; };
+		9ED5B593299A15FE00FCA0F6 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
+		9ED5B595299A161300FCA0F6 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
+		9ED5B59B299A166C00FCA0F6 /* EmailValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorTests.swift; sourceTree = "<group>"; };
+		9ED5B5A6299A1A6500FCA0F6 /* PasswordValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +137,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ED5B59F299A197000FCA0F6 /* Kingfisher in Frameworks */,
+				9ED5B5A1299A197500FCA0F6 /* FirebaseAuth in Frameworks */,
+				9ED5B5A3299A197C00FCA0F6 /* FirebaseStorage in Frameworks */,
+				9ED5B5A5299A198E00FCA0F6 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +293,7 @@
 				9ECA67A32991727100AA2A88 /* nanameueTests */,
 				9ECA67AD2991727100AA2A88 /* nanameueUITests */,
 				9ECA67902991727000AA2A88 /* Products */,
+				9ED5B59D299A197000FCA0F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,8 +334,8 @@
 		9ECA67A32991727100AA2A88 /* nanameueTests */ = {
 			isa = PBXGroup;
 			children = (
+				9ED5B597299A163400FCA0F6 /* Presentation */,
 				9ED5B5812999045E00FCA0F6 /* Mocks */,
-				9ECA67A42991727100AA2A88 /* nanameueTests.swift */,
 			);
 			path = nanameueTests;
 			sourceTree = "<group>";
@@ -362,10 +379,61 @@
 		9ED5B58B2999418A00FCA0F6 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				9ED5B590299A15D600FCA0F6 /* TextFieldValidators */,
 				9ED5B58C299941CA00FCA0F6 /* SignInViewController.swift */,
 				9ED5B58E2999420300FCA0F6 /* SignInViewModel.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		9ED5B590299A15D600FCA0F6 /* TextFieldValidators */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B591299A15EB00FCA0F6 /* TextFieldValidator.swift */,
+				9ED5B593299A15FE00FCA0F6 /* EmailValidator.swift */,
+				9ED5B595299A161300FCA0F6 /* PasswordValidator.swift */,
+			);
+			path = TextFieldValidators;
+			sourceTree = "<group>";
+		};
+		9ED5B597299A163400FCA0F6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B598299A163F00FCA0F6 /* Screens */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9ED5B598299A163F00FCA0F6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B599299A164400FCA0F6 /* SignIn */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9ED5B599299A164400FCA0F6 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B59A299A165300FCA0F6 /* Validators */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		9ED5B59A299A165300FCA0F6 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				9ED5B59B299A166C00FCA0F6 /* EmailValidatorTests.swift */,
+				9ED5B5A6299A1A6500FCA0F6 /* PasswordValidatorTests.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		9ED5B59D299A197000FCA0F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +476,12 @@
 				9ECA67A22991727100AA2A88 /* PBXTargetDependency */,
 			);
 			name = nanameueTests;
+			packageProductDependencies = (
+				9ED5B59E299A197000FCA0F6 /* Kingfisher */,
+				9ED5B5A0299A197500FCA0F6 /* FirebaseAuth */,
+				9ED5B5A2299A197C00FCA0F6 /* FirebaseStorage */,
+				9ED5B5A4299A198E00FCA0F6 /* FirebaseFirestoreSwift */,
+			);
 			productName = nanameueTests;
 			productReference = 9ECA67A02991727100AA2A88 /* nanameueTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -512,6 +586,7 @@
 				9EC5D948299802AB00BDE210 /* CodableMapper.swift in Sources */,
 				9E971ACA29917C6C00803D4C /* Section.swift in Sources */,
 				9EC5D934299560D700BDE210 /* ImageService.swift in Sources */,
+				9ED5B592299A15EB00FCA0F6 /* TextFieldValidator.swift in Sources */,
 				9ED5B58929991E0800FCA0F6 /* UIView+Utils.swift in Sources */,
 				9EC5D9502998F21200BDE210 /* PostCellViewModel.swift in Sources */,
 				9EC5D93A2997D48000BDE210 /* UserService.swift in Sources */,
@@ -524,6 +599,7 @@
 				9EC5D93229955AC100BDE210 /* AppDelegate.swift in Sources */,
 				9E971ADB299533D000803D4C /* PostsServiceMock.swift in Sources */,
 				9ED5B58F2999420300FCA0F6 /* SignInViewModel.swift in Sources */,
+				9ED5B596299A161300FCA0F6 /* PasswordValidator.swift in Sources */,
 				9EC5D94E29981F6F00BDE210 /* Publisher+Utils.swift in Sources */,
 				9EC5D94A2998077800BDE210 /* User.swift in Sources */,
 				9E971AC529917B7500803D4C /* FeedSnapshotBuilder.swift in Sources */,
@@ -537,6 +613,7 @@
 				9E971AC829917C6600803D4C /* Cell.swift in Sources */,
 				9E971AC329917B1100803D4C /* FeedDataSourceBuilder.swift in Sources */,
 				9E971ABC2991764B00803D4C /* FeedViewController.swift in Sources */,
+				9ED5B594299A15FE00FCA0F6 /* EmailValidator.swift in Sources */,
 				9E971ACD29917F7F00803D4C /* Post.swift in Sources */,
 				9E971AD32991813B00803D4C /* PostCell.swift in Sources */,
 			);
@@ -546,7 +623,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ECA67A52991727100AA2A88 /* nanameueTests.swift in Sources */,
+				9ED5B59C299A166C00FCA0F6 /* EmailValidatorTests.swift in Sources */,
+				9ED5B5A7299A1A6500FCA0F6 /* PasswordValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +1012,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9EC5D92A29955A0A00BDE210 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		9ED5B59E299A197000FCA0F6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E971AD42991820800803D4C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		9ED5B5A0299A197500FCA0F6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EC5D92A29955A0A00BDE210 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9ED5B5A2299A197C00FCA0F6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EC5D92A29955A0A00BDE210 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		9ED5B5A4299A198E00FCA0F6 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9EC5D92A29955A0A00BDE210 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
