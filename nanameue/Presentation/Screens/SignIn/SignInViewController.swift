@@ -65,7 +65,7 @@ private extension SignInViewController {
     func setUpTitle() {
         titleLabel = UILabel()
         titleLabel.text = "Welcome 😄"
-        titleLabel.textColor = .darkText
+        titleLabel.textColor = .label
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)

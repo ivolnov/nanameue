@@ -92,7 +92,6 @@ private extension FeedViewModel {
         
         let image = deletePostSubject
             .flatMap { post in self.imageService.delete(image: post.url) }
-            .onlySuccess()
         
         let user = userService
             .user()
