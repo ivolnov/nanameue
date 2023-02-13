@@ -5,8 +5,10 @@
 //  Created by Volnov Ivan on 09/02/2023.
 //
 
+@testable import nanameue
 import Foundation
 import Combine
+
 
 final class PostsServiceMock: PostsService {
     func posts(for user: User) -> AnyPublisher<Result<[Post], Error>, Never> {
@@ -55,7 +57,12 @@ final class PostsServiceMock: PostsService {
         Just(.success(())).eraseToAnyPublisher()
     }
     
+    var deletePostWasCalled = false
     func delete(post: Post, for user: User) -> AnyPublisher<Result<Void, Error>, Never> {
-        Just(.success(())).eraseToAnyPublisher()
+        Just(.success(()))
+            .handleEvents(
+                receiveOutput: { _ in  self.deletePostWasCalled = true  }
+            )
+            .eraseToAnyPublisher()
     }
 }
